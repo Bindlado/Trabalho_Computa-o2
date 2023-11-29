@@ -1,5 +1,6 @@
 from tkinter import messagebox
 from datetime import *
+	
 class Usuario:
 	def __init__(self, nome, senha):
 		self.__nome = nome
@@ -26,16 +27,23 @@ class Usuario:
 	def getlComprados(self):
 		return self.__lComprados
 		
+	def setlComprados(self, novolComprados):
+		self.__lComprados = novolComprados
+		
 	def adCompra(self, novaCompra):
 		self.__lComprados.append(novaCompra)
-		return messagebox.showinfo("Sucesso!","Item cadastrado no\nseu controle de finanças.")
+		return messagebox.showinfo("Sucesso!","Item registrado no\nseu controle de finanças.")
 		
 	def getlRendas(self):
 		return self.__lRendas
 		
+	def setlRendas(self, novalRendas):
+		self.__lRendas = novalRendas
+		
 	def adRenda(self, novaRenda):
 		self.__lRendas.append(novaRenda)
-		showinfo("Sucesso!","Renda cadastrada no\nseu controle de finanças.")
+		return messagebox.showinfo("Sucesso!","Renda registrada no\nseu controle de finanças.")
+		
 	def saldo(self):
 		valorRenda = 0
 		if len(self.__lRendas) > 0:
@@ -62,11 +70,11 @@ class Usuario:
 		return "\nNome: {}\nSenha: {}\nLista de comprados: {}\nLista de rendas: {}".format(self.__nome, self.__senha, strComprados, strRendas)
 
 class ItemDeCompra:
-	def __init__(self, nome, preco, dataCompra, localCompra):
+	def __init__(self, nome, preco, localCompra, dataCompra):
 		self.__nome = nome
 		self.__preco = float(preco)
-		self.dataCompra = dataCompra
 		self.localCompra = localCompra
+		self.dataCompra = datetime.strptime(dataCompra, '%d/%m/%Y %H:%M')
 		
 		for i in range(10):
 			if  str(i) in self.__nome:
@@ -85,15 +93,14 @@ class ItemDeCompra:
 		self.__preco = novoPreco
 		
 	def __str__(self):
-		return "Nome: {} - Preço: {} - Data da compra: {} - Local da compra: {}".format(self.__nome, self.__preco, self.dataCompra, self.localCompra)
-
+		return "{} - {} - {} - {}".format(self.dataCompra.strftime('%d/%m/%Y %H:%M'), self.__nome, self.localCompra, self.__preco)
 
 class Renda:
-	def __init__(self, nome, valor, dataRecebimento, fonte):
+	def __init__(self, nome, valor, fonte, dataRecebimento):
 		self.__nome = nome
 		self.__valor = float(valor)
-		self.dataRecebimento = dataRecebimento
 		self.fonte = fonte
+		self.dataRecebimento = datetime.strptime(dataRecebimento, '%d/%m/%Y %H:%M')
 		
 		for i in range(10):
 			if  str(i) in self.__nome:
@@ -112,4 +119,4 @@ class Renda:
 		self.__valor = novoValor
 		
 	def __str__(self):
-		return "Nome: {} - Valor: {} - Data: {} - Fonte: {}".format(self.__nome, self.__valor, self.__dataRecebimento, self.fonte)
+		return "{} - {} - {} - {}".format(self.dataRecebimento.strftime('%d/%m/%Y %H:%M'), self.__nome, self.fonte, self.__valor)
