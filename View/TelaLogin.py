@@ -9,7 +9,7 @@ import ControleDeFinancas as CF
 class TelaLogin(Tk, object):
     '''Classe que define a janela inicial (Tela de login)'''
     def __init__(self):
-        '''Método construtor da classe TelaLogin'''
+        '''Evento construtor da classe TelaLogin'''
         super(TelaLogin, self).__init__()
 
         # Configuração do título
@@ -27,7 +27,7 @@ class TelaLogin(Tk, object):
         self.f2.pack(anchor='e')
         self.f3.pack()
 
-        # Configuração dos entries
+        # Configuração das
         self.e1 = Entry(self.f1)
         self.e2 = Entry(self.f2, show='*')
         self.e1.pack(side=RIGHT)
