@@ -2,7 +2,7 @@ from tkinter import *
 from pickle import *
 from tkinter import messagebox
 import TelaCadastrandoRenda as TCR
-import model
+from Model import model
 
 class TelaCadastrandoItem(Tk):
 	def __init__(self, telaControle):
