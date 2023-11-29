@@ -1,9 +1,20 @@
+try:
+    from tkinter import *
+    from pickle import *
+    from tkinter import messagebox
+    import TelaCadastro
+    import ControleDeFinancas as CF
+    import os
+    
+except ModuleNotFoundError as e:
+    print("Não foi possível importar: {}".format(e))
+
 from tkinter import *
 from pickle import *
 from tkinter import messagebox
 import TelaCadastro
 import ControleDeFinancas as CF
-
+import os
 class TelaLogin(Tk, object):
 	def __init__(self):
 		super(TelaLogin, self).__init__()
@@ -83,6 +94,7 @@ class TelaLogin(Tk, object):
 			elif varDeUser - len(self.users) == 0:
 				raise IndexError
 		except IndexError:
+			#Não esquecer de comentar o "r"
 			r = messagebox.askyesno("ERRO!","O usuário ainda não foi cadastrado.\n\nQuer ir para o cadastro?")
 			if r:
 				self.cadastrar(event)

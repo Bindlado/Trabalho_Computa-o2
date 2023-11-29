@@ -30,9 +30,6 @@ class TelaControle(Tk):
 		self.lb1 = Listbox(self.f1, yscrollcommand=self.scrollbarY.set,)
 		self.lb1.pack(side=RIGHT)
 		self.scrollbarY.config(command=self.lb1.yview)
-		
-		self.escreverListBox()
-		
 		self.b1 = Button(self.f2, text='Cadastar Item')
 		self.b2 = Button(self.f2, text='Limpar')
 		self.b3 = Button(self.f2, text='Gerar Relatório')
@@ -42,7 +39,7 @@ class TelaControle(Tk):
 		self.b1.bind("<ButtonRelease-1>", self.cadastrarItem)
 		self.b2.bind("<ButtonRelease-1>", self.limpar)
 		self.b3.bind("<ButtonRelease-1>", )
-		
+		self.escreverListBox()		
 	def escreverListBox(self):
 		self.l0.config(text='Total: R$ %.2f'%self.listaUsers[self.telaLogin.iUser].saldo())
 		self.lb1.delete(0, END)

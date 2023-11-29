@@ -1,7 +1,7 @@
 from tkinter import *
 from pickle import *
 from tkinter import messagebox
-import model
+from Model import model
 
 class TelaCadastro(Tk):
 	def __init__(self, telaLogin):
