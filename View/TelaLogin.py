@@ -27,7 +27,7 @@ class TelaLogin(Tk, object):
         self.f2.pack(anchor='e')
         self.f3.pack()
 
-        # Configuração das
+        # Configuração das entradas do usuário
         self.e1 = Entry(self.f1)
         self.e2 = Entry(self.f2, show='*')
         self.e1.pack(side=RIGHT)
