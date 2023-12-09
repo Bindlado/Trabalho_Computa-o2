@@ -22,8 +22,7 @@ class TelaControle(Tk):
             # Fechamento do arquivo de texto
             arq1.close()
 
-        # Kaique, para que serve essa linha?
-        self.telaLogin = telaLogin
+        self.telaLogin = telaLogin # Fechamento do arquivo de texto
 
         # Configuração dos frames da janela de finanças
         self.title("Controle De Finanças")

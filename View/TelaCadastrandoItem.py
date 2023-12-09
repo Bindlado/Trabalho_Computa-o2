@@ -118,13 +118,13 @@ class TelaCadastrandoItem(Tk):
         entrada.bind('<FocusOut>', self.desfocado)
         
     def focado(self, event):
-        '''Função para focar na entrada quando selecionada'''
+        '''Função para verificar se está focado na entrada'''
         if event.widget.get() == event.widget.cget('textvariable'):
             event.widget.delete(0, END)
             event.widget.config(foreground='black')    
        
     def desfocado(self, event):
-        '''Função para desfocar da entrada quando não selecionada'''
+        '''Função para verificar se está desfocado da entrada'''
         if event.widget.get() == '':
             event.widget.insert(0, event.widget.cget('textvariable'))
             event.widget.config(foreground='darkgray')
@@ -191,6 +191,7 @@ class TelaCadastrandoItem(Tk):
                 self.telaControle.deiconify()
                 self.withdraw()
             
+        # Captura de erros
         except TypeError:
             messagebox.showerror("ERRO!","Não pode números no nome.")
         except ValueError:
@@ -199,7 +200,6 @@ class TelaCadastrandoItem(Tk):
             except:
                 messagebox.showerror("ERRO!","Em %s só são válidos números."%self.l2.cget('text').replace('(R$):', ''))
             try:
-                datetime.strptime('%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get()), '%d/%m/%Y %H:%M')
                 datetime.strptime('%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get()), '%d/%m/%Y %H:%M')
 
             except:

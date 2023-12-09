@@ -63,7 +63,7 @@ class TelaLogin(Tk, object):
                 print(e)
             finally:
                 arq1.close()
-        except:
+        except Exception:
             arq2 = open("UsuáriosCadastrados.txt", "wb")
             try:
                 dump([], arq2)
@@ -85,18 +85,21 @@ class TelaLogin(Tk, object):
                     varDeSenha = True
                 else:
                     varDeUser += 1
+        # Parte responsável por lançar e capturar os erros
         try:
             if varDeSenha:
                 raise ValueError
             elif varDeUser - len(self.users) == 0:
                 raise IndexError
         except IndexError:
+            # Esse "r" é um valor booleano da resposta do usuário
             r = messagebox.askyesno("ERRO!", "O usuário ainda não foi cadastrado.\n\nQuer ir para o cadastro?")
-            if r:
+            if r: 
                 self.cadastrar(event)
         except ValueError:
             messagebox.showerror("ERRO!", "Por favor,\nVerifique se a senha está correta.")
 
+# Manter a tela ativa
 if __name__ == '__main__':
     telaLogin = TelaLogin()
     telaLogin.mainloop()

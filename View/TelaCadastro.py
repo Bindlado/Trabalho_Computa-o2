@@ -10,7 +10,7 @@ class TelaCadastro(Tk):
         '''Método construtor da classe TelaControle'''
         super(TelaCadastro, self).__init__()
 
-        self.telaLogin = telaLogin  # Kaique, que porra é essa?
+        self.telaLogin = telaLogin  # Usado para não precisar importar o telaLogin
 
         # Configuração dos frames da janela de cadastro
         self.title("Cadastro de Usuário")
@@ -54,7 +54,7 @@ class TelaCadastro(Tk):
 
         arq1 = open("UsuáriosCadastrados.txt", "rb")  # Abertura do arquivo de texto no modo de leitura binária
 
-        # Controle de error para um erro de entrada e saída de dados
+        # Controle de erros para um erro de entrada e saída de dados
         try:
             self.listaUsers = load(arq1)  # Deserialização do texto UsuáriosCadastrados
 
@@ -73,7 +73,7 @@ class TelaCadastro(Tk):
         self.withdraw()
 
     def salvar(self, event):
-        '''Evento usado para verificar a unicidade e veracidade do usuário e senha e salva-lhos'''
+        '''Evento usado para verificar a unicidade (ele é único) e veracidade (é verdadeiro) do usuário e senha e salva-los'''
         varDeNome = False
         for i in range(len(self.listaUsers)):
             if len(self.listaUsers) > 0 and self.listaUsers[i].getNome() == self.e1.get():
