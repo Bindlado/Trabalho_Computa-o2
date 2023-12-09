@@ -3,8 +3,8 @@ from tkinter import *
 from pickle import *
 from tkinter import messagebox
 from datetime import datetime
-import TelaCadastrandoRenda as TCR
-from Model import model
+from Model import ItemDeCompra
+from Model import Renda
 
 # Define a classe para a tela de cadastro de itens
 class TelaCadastrandoItem(Tk):
@@ -122,7 +122,7 @@ class TelaCadastrandoItem(Tk):
         if event.widget.get() == event.widget.cget('textvariable'):
             event.widget.delete(0, END)
             event.widget.config(foreground='black')    
-       
+
     def desfocado(self, event):
         '''Função para verificar se está desfocado da entrada'''
         if event.widget.get() == '':
@@ -174,9 +174,9 @@ class TelaCadastrandoItem(Tk):
         try:
             if self.e1.get() != self.e1.cget('textvariable') and self.e2.get() != self.e2.cget('textvariable') and self.e3.get() != self.e3.cget('textvariable'):
                 if self.e1.cget('textvariable') == '(ex: Sorvete)':
-                    listaUsers[self.telaControle.telaLogin.iUser].adCompra(model.ItemDeCompra(self.e1.get(), self.e2.get(), self.e3.get(), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
+                    listaUsers[self.telaControle.telaLogin.iUser].adCompra(ItemDeCompra.ItemDeCompra(self.e1.get(), self.e2.get().replace(',','.'), self.e3.get(), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
                 if self.e1.cget('textvariable') == '(ex: Conserto de PC)':
-                    listaUsers[self.telaControle.telaLogin.iUser].adRenda(model.Renda(self.e1.get(), self.e2.get(), self.e3.get(), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
+                    listaUsers[self.telaControle.telaLogin.iUser].adRenda(Renda.Renda(self.e1.get(), self.e2.get(), self.e3.get().replace(',','.'), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
                     
                 arq2 = open("UsuáriosCadastrados.txt", "wb")
                 try:

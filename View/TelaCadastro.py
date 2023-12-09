@@ -2,7 +2,7 @@
 from tkinter import *
 from pickle import *
 from tkinter import messagebox
-from Model import model
+from Model import Usuario as User
 
 class TelaCadastro(Tk):
     '''Classe que define a janela de cadastro'''
@@ -81,7 +81,7 @@ class TelaCadastro(Tk):
 
         if self.e2.get() == self.e3.get() and varDeNome == False and len(self.e1.get().replace(' ', '')) > 2:
             try:
-                self.listaUsers.append(model.Usuario(self.e1.get(), self.e3.get()))
+                self.listaUsers.append(User.Usuario(self.e1.get(), self.e3.get()))
                 arq2 = open("UsuáriosCadastrados.txt", "wb")
                 try:
                     dump(self.listaUsers, arq2)
