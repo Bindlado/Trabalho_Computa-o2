@@ -1,7 +1,7 @@
 import sys
 import os
 
-# Obtém o diretório do __init__.py
+# Obtém o diretório da pasta
 diretorio_do_arquivo = os.path.dirname(os.path.abspath(__file__))
 
 # Adiciona o diretório ao path para importar módulos de lá
