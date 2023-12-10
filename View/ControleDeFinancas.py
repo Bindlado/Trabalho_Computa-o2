@@ -7,6 +7,8 @@ import TelaCadastrandoItem as TCI
 import matplotlib.pyplot as plt
 from numpy import arange
 
+
+
 class TelaControle(Tk):
     '''Classe que define a Janela de Finanças'''
     def __init__(self, telaLogin):
@@ -85,15 +87,15 @@ class TelaControle(Tk):
             plt.xticks(xComprados)  # Adiciona ticks de 1 em 1 ao longo do eixo x
         
         # Gráfico de pizza (torta)
-        plt.subplot(212) 
+        '''plt.subplot(212) 
         labels = ("Compra", "Renda")
-        sizes = [
+        sizes = [precoCompra,ValorRenda]
         plt.xlabel("X")
         plt.ylabel("Y")
         plt.title("Gráfico Compra x Renda")
         plt.pie(sizes, labels=labels,shadow=True)
         
-        plt.show()
+        plt.show()'''
 
     def escreverListBox(self):
         '''Criação da função usada para inserir as informações sobre a renda e os itens comprados pelo usuário, além de mostrar o saldo'''
