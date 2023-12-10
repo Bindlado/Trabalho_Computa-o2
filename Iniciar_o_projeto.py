@@ -1,3 +1,4 @@
+# Parte responsável pela importação dos módulos
 import sys
 import os
 

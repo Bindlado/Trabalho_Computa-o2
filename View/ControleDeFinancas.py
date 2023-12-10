@@ -39,7 +39,7 @@ class TelaControle(Tk):
         # Configuração do Listbox e dos scrollbars
         self.scrollbarY = Scrollbar(self.f1, orient=VERTICAL)
         self.scrollbarY.pack(side=RIGHT, fill=Y)
-        self.lb1 = Listbox(self.f1, yscrollcommand=self.scrollbarY.set,)
+        self.lb1 = Listbox(self.f1, yscrollcommand=self.scrollbarY.set,height=0, width=0)
         self.lb1.pack(side=RIGHT)
         self.scrollbarY.config(command=self.lb1.yview)
 
