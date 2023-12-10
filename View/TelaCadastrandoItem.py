@@ -145,7 +145,7 @@ class TelaCadastrandoItem(Tk):
             self.l2.config(text='Valor(R$): ')
             self.l3.config(text='Local da renda: ')
             self.e1.config(textvariable='(ex: Conserto de PC)')
-            self.e2.config(textvariable='(ex: 119.99)')
+            self.e2.config(textvariable='(ex: 119,99)')
             self.e3.config(textvariable='(ex: Trabalho)')
             self.defEntrada(self.e1)
             self.defEntrada(self.e2)
@@ -156,7 +156,7 @@ class TelaCadastrandoItem(Tk):
             self.l2.config(text='Preço(R$): ')
             self.l3.config(text='Local da compra: ')
             self.e1.config(textvariable='(ex: Sorvete)')
-            self.e2.config(textvariable='(ex: 19.99)')
+            self.e2.config(textvariable='(ex: 19,99)')
             self.e3.config(textvariable='(ex: Mercado)')
             self.defEntrada(self.e1)
             self.defEntrada(self.e2)
@@ -176,7 +176,7 @@ class TelaCadastrandoItem(Tk):
                 if self.e1.cget('textvariable') == '(ex: Sorvete)':
                     listaUsers[self.telaControle.telaLogin.iUser].adCompra(ItemDeCompra.ItemDeCompra(self.e1.get(), self.e2.get().replace(',','.'), self.e3.get(), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
                 if self.e1.cget('textvariable') == '(ex: Conserto de PC)':
-                    listaUsers[self.telaControle.telaLogin.iUser].adRenda(Renda.Renda(self.e1.get(), self.e2.get(), self.e3.get().replace(',','.'), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
+                    listaUsers[self.telaControle.telaLogin.iUser].adRenda(Renda.Renda(self.e1.get(), self.e2.get().replace(',','.'), self.e3.get(), '%s/%s/%s %s:%s'%(self.e31.get(), self.e32.get(), self.e33.get(), self.e34.get(), self.e35.get())))
                     
                 arq2 = open("UsuáriosCadastrados.txt", "wb")
                 try:

@@ -1,6 +1,5 @@
 from tkinter import messagebox
 from datetime import *
-	
 class ItemDeCompra:
 	def __init__(self, nome, preco, localCompra, dataCompra):
 		self.__nome = nome

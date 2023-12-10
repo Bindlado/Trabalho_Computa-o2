@@ -1,6 +1,5 @@
 from tkinter import messagebox
 from datetime import *
-
 class Usuario:
 	def __init__(self, nome, senha):
 		self.__nome = nome

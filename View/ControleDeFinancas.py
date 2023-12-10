@@ -4,6 +4,9 @@ from pickle import *
 from tkinter import messagebox
 import TelaCadastrandoItem as TCI
 
+from matplotlib.pyplot import plot,show
+from numpy import arange
+
 class TelaControle(Tk):
     '''Classe que define a Janela de Finanças'''
     def __init__(self, telaLogin):
@@ -52,7 +55,23 @@ class TelaControle(Tk):
         self.b3.pack(side=RIGHT)
         self.b1.bind("<ButtonRelease-1>", self.cadastrarItem)
         self.b2.bind("<ButtonRelease-1>", self.limpar)
-        self.b3.bind("<ButtonRelease-1>", )
+        self.b3.bind("<ButtonRelease-1>", self.gerarRelatorio)
+
+    # Gera um gráfico que compõe o fluxo de caixa do usuário
+    def gerarRelatorio(self, event):
+        user = self.listaUsers[self.telaLogin.iUser]
+        if len(user.getlComprados()) > 0:
+            xComprados = arange(len(user.getlComprados()))
+            yComprados = [item.getPreco() for item in user.getlComprados()]
+            plot(xComprados, yComprados)
+            
+            meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+            123456789
+        if len(user.getlRendas()) > 0:
+            xComprados = arange(len(user.getlRendas()))
+            yComprados = [item.getValor() for item in user.getlRendas()]
+            plot(xComprados, yComprados)              
+            show()
 
     def escreverListBox(self):
         '''Criação da função usada para inserir as informações sobre a renda e os itens comprados pelo usuário, além de mostrar o saldo'''
@@ -63,6 +82,7 @@ class TelaControle(Tk):
 
         for i in range(len(self.listaUsers[self.telaLogin.iUser].getlRendas())):
             self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlRendas()[i])
+
 
     def cadastrarItem(self, event):
         '''Criação do evento usado para ampliar a janela de cadastro de itens e decrescer a janela de finanças'''

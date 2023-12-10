@@ -1,6 +1,5 @@
 from tkinter import messagebox
 from datetime import *
-
 class Renda:
 	def __init__(self, nome, valor, fonte, dataRecebimento):
 		self.__nome = nome
