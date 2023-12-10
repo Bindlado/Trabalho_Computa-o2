@@ -34,4 +34,4 @@ class ItemDeCompra:
         
     def __str__(self):
         """Retorna uma representação em string da instância da classe"""
-        return "{} - {} - {} - {}".format(self.dataCompra.strftime('%d/%m/%Y %H:%M'), self.__nome, self.localCompra, self.__preco)
+        return "{} - {} - {} - {} - Compra".format(self.dataCompra.strftime('%d/%m/%Y %H:%M'), self.__nome, self.localCompra, self.__preco)

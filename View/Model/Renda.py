@@ -35,5 +35,5 @@ class Renda:
         
     def __str__(self):
         """Retorna uma representação em string da instância da classe"""
-        return "{} - {} - {} - {}".format(self.dataRecebimento.strftime('%d/%m/%Y %H:%M'), self.__nome, self.fonte, self.__valor)
+        return "{} - {} - {} - {} - Renda".format(self.dataRecebimento.strftime('%d/%m/%Y %H:%M'), self.__nome, self.fonte, self.__valor)
 

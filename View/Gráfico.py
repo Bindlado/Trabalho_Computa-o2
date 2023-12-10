@@ -1,5 +1,3 @@
-
-
 def gerarRelatorio(self, event):
         '''Função utilizada para gerar um relatório em formato de gráfico'''
         user = self.listaUsers[self.telaLogin.iUser]

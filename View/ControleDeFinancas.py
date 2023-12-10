@@ -4,7 +4,7 @@ from pickle import *
 from tkinter import messagebox
 import TelaCadastrandoItem as TCI
 
-from matplotlib.pyplot import plot,show
+import matplotlib.pyplot as plt
 from numpy import arange
 
 class TelaControle(Tk):
@@ -61,20 +61,39 @@ class TelaControle(Tk):
         '''Função utilizada para gerar um relatório em formato de gráfico'''
         user = self.listaUsers[self.telaLogin.iUser]
         
+        # Parte relacionada às rendas do usuário
+        
+        if len(user.getlRendas()) > 0:
+            plt.subplot(221)
+            xRendas = arange(1,len(user.getlRendas())+1)
+            yRendas = [item.getValor() for item in user.getlRendas()]
+            plt.plot(xRendas, yRendas)
+            plt.xlabel("Itens")
+            plt.ylabel("Valores de renda (R$)")
+            plt.title("Gráfico de renda do usuário")  
+            plt.xticks(xRendas)  # Adiciona ticks de 1 em 1 ao longo do eixo x         
+        
         # Parte relacionada aos itens comprados pelo usuário
         if len(user.getlComprados()) > 0:
-            xComprados = arange(len(user.getlComprados()))
+            plt.subplot(222)
+            xComprados = arange(1,len(user.getlComprados())+1)
             yComprados = [item.getPreco() for item in user.getlComprados()]
-            plot(xComprados, yComprados)
-            
-            meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
-            123456789
-        # Parte relacionada às rendas do usuário
-        if len(user.getlRendas()) > 0:
-            xComprados = arange(len(user.getlRendas()))
-            yComprados = [item.getValor() for item in user.getlRendas()]
-            plot(xComprados, yComprados)              
-            show()
+            plt.plot(xComprados, yComprados)
+            plt.xlabel("Itens")
+            plt.ylabel("Valores de compra (R$)")
+            plt.title("Gráfico de compra do usuário")
+            plt.xticks(xComprados)  # Adiciona ticks de 1 em 1 ao longo do eixo x
+        
+        # Gráfico de pizza (torta)
+        plt.subplot(212) 
+        labels = ("Compra", "Renda")
+        sizes = [
+        plt.xlabel("X")
+        plt.ylabel("Y")
+        plt.title("Gráfico Compra x Renda")
+        plt.pie(sizes, labels=labels,shadow=True)
+        
+        plt.show()
 
     def escreverListBox(self):
         '''Criação da função usada para inserir as informações sobre a renda e os itens comprados pelo usuário, além de mostrar o saldo'''
