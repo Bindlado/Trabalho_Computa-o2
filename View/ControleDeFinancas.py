@@ -39,7 +39,7 @@ class TelaControle(Tk):
         # Configuração do Listbox e dos scrollbars
         self.scrollbarY = Scrollbar(self.f1, orient=VERTICAL)
         self.scrollbarY.pack(side=RIGHT, fill=Y)
-        self.lb1 = Listbox(self.f1, yscrollcommand=self.scrollbarY.set,height=0, width=0)
+        self.lb1 = Listbox(self.f1, yscrollcommand=self.scrollbarY.set)
         self.lb1.pack(side=RIGHT)
         self.scrollbarY.config(command=self.lb1.yview)
 
@@ -78,13 +78,18 @@ class TelaControle(Tk):
 
     def escreverListBox(self):
         '''Criação da função usada para inserir as informações sobre a renda e os itens comprados pelo usuário, além de mostrar o saldo'''
-        self.l0.config(text='Total: R$ %.2f' % self.listaUsers[self.telaLogin.iUser].saldo())
-        self.lb1.delete(0, END)
-        for i in range(len(self.listaUsers[self.telaLogin.iUser].getlComprados())):
-            self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlComprados()[i])
+        
+        if len(self.listaUsers[self.telaLogin.iUser].getlComprados()) == 0 == len(self.listaUsers[self.telaLogin.iUser].getlRendas()):
+            self.lb1.config(height=5, width=20)
+        else:
+            self.lb1.config(height=0, width=0)
+            self.l0.config(text='Total: R$ %.2f' % self.listaUsers[self.telaLogin.iUser].saldo())
+            self.lb1.delete(0, END)
+            for i in range(len(self.listaUsers[self.telaLogin.iUser].getlComprados())):
+                self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlComprados()[i])
 
-        for i in range(len(self.listaUsers[self.telaLogin.iUser].getlRendas())):
-            self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlRendas()[i])
+            for i in range(len(self.listaUsers[self.telaLogin.iUser].getlRendas())):
+                self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlRendas()[i])
 
 
     def cadastrarItem(self, event):
