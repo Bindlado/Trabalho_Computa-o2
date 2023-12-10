@@ -1,4 +1,4 @@
-# Parte responsável pelo importe dos módulos
+# Parte responsável pela importação dos módulos
 from tkinter import *
 from pickle import *
 from tkinter import messagebox

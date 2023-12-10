@@ -1,4 +1,4 @@
-# Parte responsável pelo importe do módulo Pickle
+# Parte responsável pela importação dos módulos
 from pickle import *
 
 # Criação de uma variável tipo lista inicialmente vazia
