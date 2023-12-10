@@ -73,7 +73,8 @@ class TelaControle(Tk):
             plt.xlabel("Itens")
             plt.ylabel("Valores de renda (R$)")
             plt.title("Gráfico de renda do usuário")  
-            plt.xticks(xRendas)  # Adiciona ticks de 1 em 1 ao longo do eixo x         
+            plt.xticks(xRendas)  # Adiciona ticks de 1 em 1 ao longo do eixo x      
+            plt.grid(True)   
         
         # Parte relacionada aos itens comprados pelo usuário
         if len(user.getlComprados()) > 0:
@@ -85,6 +86,7 @@ class TelaControle(Tk):
             plt.ylabel("Valores de compra (R$)")
             plt.title("Gráfico de compra do usuário")
             plt.xticks(xComprados)  # Adiciona ticks de 1 em 1 ao longo do eixo x
+            plt.grid(True)
         
         # Gráfico de pizza (torta)
         # Parte de cálculo
