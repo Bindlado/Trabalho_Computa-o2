@@ -87,15 +87,25 @@ class TelaControle(Tk):
             plt.xticks(xComprados)  # Adiciona ticks de 1 em 1 ao longo do eixo x
         
         # Gráfico de pizza (torta)
-        '''plt.subplot(212) 
+        # Parte de cálculo
+        valorRenda = 0
+        if len(user.getlRendas()) > 0:
+            for iV in range(len(user.getlRendas())):
+                valorRenda += user.getlRendas()[iV].getValor()
+        precoCompra = 0
+        if len(user.getlComprados()) > 0:
+            for iP in range(len(user.getlComprados())):
+                precoCompra += user.getlComprados()[iP].getPreco()
+                
+        # Parte da plotagem
+        plt.subplot(212)
         labels = ("Compra", "Renda")
-        sizes = [precoCompra,ValorRenda]
-        plt.xlabel("X")
-        plt.ylabel("Y")
-        plt.title("Gráfico Compra x Renda")
-        plt.pie(sizes, labels=labels,shadow=True)
-        
-        plt.show()'''
+        sizes = [precoCompra,valorRenda]
+        plt.title("Gráfico formato pizza")
+        if sizes[0] > 0 or sizes[1] > 0:
+            plt.pie(sizes, labels=labels,shadow=True)
+            plt.get_current_fig_manager().window.state('zoomed') # Iniciar a tela como cheia
+            plt.show(fullscreen=True)
 
     def escreverListBox(self):
         '''Criação da função usada para inserir as informações sobre a renda e os itens comprados pelo usuário, além de mostrar o saldo'''
