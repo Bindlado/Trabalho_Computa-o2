@@ -66,7 +66,7 @@ class TelaControle(Tk):
         # Parte relacionada às rendas do usuário
         
         if len(user.getlRendas()) > 0:
-            plt.subplot(221)
+            plt.subplot(223)
             xRendas = arange(1,len(user.getlRendas())+1)
             yRendas = [item.getValor() for item in user.getlRendas()]
             plt.plot(xRendas, yRendas)
@@ -77,7 +77,7 @@ class TelaControle(Tk):
         
         # Parte relacionada aos itens comprados pelo usuário
         if len(user.getlComprados()) > 0:
-            plt.subplot(222)
+            plt.subplot(224)
             xComprados = arange(1,len(user.getlComprados())+1)
             yComprados = [item.getPreco() for item in user.getlComprados()]
             plt.plot(xComprados, yComprados)
@@ -98,14 +98,14 @@ class TelaControle(Tk):
                 precoCompra += user.getlComprados()[iP].getPreco()
                 
         # Parte da plotagem
-        plt.subplot(212)
+        plt.subplot(211)
         labels = ("Compra", "Renda")
         sizes = [precoCompra,valorRenda]
         plt.title("Gráfico formato pizza")
         if sizes[0] > 0 or sizes[1] > 0:
-            plt.pie(sizes, labels=labels,shadow=True)
+            plt.pie(sizes, labels=labels,autopct='%1.1f%%',shadow=True)
             plt.get_current_fig_manager().window.state('zoomed') # Iniciar a tela como cheia
-            plt.show(fullscreen=True)
+            plt.show()
 
     def escreverListBox(self):
         '''Criação da função usada para inserir as informações sobre a renda e os itens comprados pelo usuário, além de mostrar o saldo'''
