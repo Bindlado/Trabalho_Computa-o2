@@ -116,13 +116,13 @@ class TelaControle(Tk):
             self.lb1.config(height=5, width=20)
         else:
             self.lb1.config(height=0, width=0)
-            self.l0.config(text='Total: R$ %.2f' % self.listaUsers[self.telaLogin.iUser].saldo())
-            self.lb1.delete(0, END)
-            for i in range(len(self.listaUsers[self.telaLogin.iUser].getlComprados())):
-                self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlComprados()[i])
+        self.l0.config(text='Total: R$ %.2f' % self.listaUsers[self.telaLogin.iUser].saldo())
+        self.lb1.delete(0, END)
+        for i in range(len(self.listaUsers[self.telaLogin.iUser].getlComprados())):
+            self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlComprados()[i])
 
-            for i in range(len(self.listaUsers[self.telaLogin.iUser].getlRendas())):
-                self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlRendas()[i])
+        for i in range(len(self.listaUsers[self.telaLogin.iUser].getlRendas())):
+            self.lb1.insert(END, self.listaUsers[self.telaLogin.iUser].getlRendas()[i])
 
 
     def cadastrarItem(self, event):
