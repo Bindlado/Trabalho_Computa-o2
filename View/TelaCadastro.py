@@ -61,7 +61,7 @@ class TelaCadastro(Tk):
 
             except IOError as e:
                 print(e)  # Visualização do motivo do erro de entrada e saída
-
+                self.listaUsers = []
             finally:
                 arq1.close()  # Fechamento do arquivo de texto
         except Exception:
@@ -72,10 +72,7 @@ class TelaCadastro(Tk):
                 print(e)
             finally:
                 arq1.close()
-                self.users = []
-
-        if self.listaUsers != list(self.listaUsers):
-            self.listaUsers = []
+                self.listaUsers = []
 
     def voltar(self, event):
         '''Evento usado para ampliar a tela inicial e decrescer a tela de cadastro'''

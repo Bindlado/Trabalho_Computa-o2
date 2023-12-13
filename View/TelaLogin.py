@@ -56,7 +56,7 @@ class TelaLogin(Tk, object):
     def entrar(self, event):
         '''Evento responsável para testar a existência e veracidade do usuário e senha antes de entrar'''
         try:
-            arq1 = open("UsuáriosCadastrados.txt", "rb")
+            arq1 = open("UsuáriosCadastrados.txt", "rb") # Abertura do arquivo de texto
             try:
                 self.users = load(arq1)
             except IOError as e:
