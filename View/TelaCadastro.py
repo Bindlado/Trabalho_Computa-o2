@@ -10,7 +10,7 @@ class TelaCadastro(Tk):
         '''Método construtor da classe TelaControle'''
         super(TelaCadastro, self).__init__()
 
-        self.telaLogin = telaLogin  # Usado para não precisar importar o telaLogin
+        self.telaLogin = telaLogin
 
         # Configuração dos frames da janela de cadastro
         self.title("Cadastro de Usuário")
@@ -52,17 +52,27 @@ class TelaCadastro(Tk):
         self.b2.pack(side=LEFT)
         self.b2.bind('<ButtonRelease-1>', self.voltar)
 
-        arq1 = open("UsuáriosCadastrados.txt", "rb")  # Abertura do arquivo de texto no modo de leitura binária
-
-        # Controle de erros para um erro de entrada e saída de dados
         try:
-            self.listaUsers = load(arq1)  # Deserialização do texto UsuáriosCadastrados
+            arq1 = open("UsuáriosCadastrados.txt", "rb")  # Abertura do arquivo de texto no modo de leitura binária
 
-        except IOError as e:
-            print(e)  # Visualização do motivo do erro de entrada e saída
+            # Controle de erros para um erro de entrada e saída de dados
+            try:
+                self.listaUsers = load(arq1)  # Deserialização do texto UsuáriosCadastrados
 
-        finally:
-            arq1.close()  # Fechamento do arquivo de texto
+            except IOError as e:
+                print(e)  # Visualização do motivo do erro de entrada e saída
+
+            finally:
+                arq1.close()  # Fechamento do arquivo de texto
+        except Exception:
+            arq1 = open("UsuáriosCadastrados.txt", "wb")
+            try:
+                dump([], arq1)
+            except IOError as e:
+                print(e)
+            finally:
+                arq1.close()
+                self.users = []
 
         if self.listaUsers != list(self.listaUsers):
             self.listaUsers = []

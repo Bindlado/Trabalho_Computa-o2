@@ -27,7 +27,7 @@ class TelaControle(Tk):
             # Fechamento do arquivo de texto
             arq1.close()
 
-        self.telaLogin = telaLogin # Fechamento do arquivo de texto
+        self.telaLogin = telaLogin
 
         # Configuração dos frames da janela de finanças
         self.title("Controle De Finanças")
@@ -69,7 +69,7 @@ class TelaControle(Tk):
             plt.subplot(223)
             xRendas = arange(1,len(user.getlRendas())+1)
             yRendas = [item.getValor() for item in user.getlRendas()]
-            plt.plot(xRendas, yRendas)
+            plt.plot(xRendas, yRendas,'go-')
             plt.xlabel("Itens")
             plt.ylabel("Valores de renda (R$)")
             plt.title("Gráfico de renda do usuário")  
@@ -81,7 +81,7 @@ class TelaControle(Tk):
             plt.subplot(224)
             xComprados = arange(1,len(user.getlComprados())+1)
             yComprados = [item.getPreco() for item in user.getlComprados()]
-            plt.plot(xComprados, yComprados)
+            plt.plot(xComprados, yComprados, 'ro-')
             plt.xlabel("Itens")
             plt.ylabel("Valores de compra (R$)")
             plt.title("Gráfico de compra do usuário")

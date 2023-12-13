@@ -92,15 +92,17 @@ class TelaCadastrandoItem(Tk):
         self.b1.bind('<ButtonRelease-1>', self.salvar)
         self.b1.pack(side=RIGHT)
         self.b2 = Button(self.f4, text='Voltar')
-        self.b2.pack(side=LEFT)
+        self.b2.pack(side=RIGHT)
         self.b2.bind('<ButtonRelease-1>', self.voltar)
 
         # Cria botões de opção para escolher entre "Compra" e "Renda"
-        self.rb1 = Radiobutton(self, text="Compra", value=1)
+        self.rdf = Frame(self.f4)
+        self.rdf.pack(side=RIGHT)
+        self.rb1 = Radiobutton(self.rdf, text="Compra", value=1)
         self.rb1.pack(anchor=W)
         self.rb1.bind("<Button-1>", self.mudarTela)
         self.rb1.select()
-        self.rb2 = Radiobutton(self, text="Renda", value=2)
+        self.rb2 = Radiobutton(self.rdf, text="Renda", value=2)
         self.rb2.pack(anchor=W)
         self.rb2.bind("<Button-1>", self.mudarTela)
         
